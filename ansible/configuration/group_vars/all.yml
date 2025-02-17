@@ -1,0 +1,4 @@
+nginx_container_name: nginx_container
+nginx_image: "nginx:latest"
+web_root: "/opt/nginx/www"
+nginx_conf_dir: "/opt/nginx/conf"

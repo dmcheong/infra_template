@@ -1,0 +1,17 @@
+---
+- name: Supprimer le conteneur Nginx existant s'il y a lieu
+  command: docker rm -f {{ nginx_container_name }}
+  ignore_errors: yes
+
+- name: Lancer le conteneur Nginx
+  docker_container:
+    name: "{{ nginx_container_name }}"
+    image: "{{ nginx_image }}"
+    state: started
+    restart_policy: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "{{ nginx_conf_dir }}:/etc/nginx/conf.d"
+      - "{{ web_root }}:/usr/share/nginx/html"

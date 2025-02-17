@@ -1,0 +1,6 @@
+---
+- name: Déploiement de Nginx et d'une app web
+  hosts: webservers
+  become: yes
+  roles:
+    - nginx
